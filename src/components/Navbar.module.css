@@ -1,0 +1,15 @@
+.nav {
+    grid-area: n;
+    background-color: blue;
+  }
+
+
+  .item {
+
+    color:aliceblue;
+  }
+
+  .item.active {
+    font-weight: bold;
+    color:red;
+  }
