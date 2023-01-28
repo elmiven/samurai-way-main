@@ -26,7 +26,7 @@ const App = () => {
         <Route path='/dialogs' component={Dialogs} />
         <Route path='/music' component={Music} />
         <Route path='/news' component={News} />
-        <Route path='/Settings' component={Settings} />
+        <Route path='/settings' component={Settings} />
       </div>
       {/*<Technologies /> */}
     </div>
