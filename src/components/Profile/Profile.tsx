@@ -5,11 +5,11 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 
 
-const Profile = (props: PostPropsType) => {
+const Profile = (props: any) => {
   return (
     <div>
       <ProfileInfo />
-      <MyPosts posts={props.posts}/>
+      <MyPosts posts={props.state.posts}/>
     </div>
   )
 }

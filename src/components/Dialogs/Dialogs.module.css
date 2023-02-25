@@ -4,7 +4,6 @@
 
 }
 
-
 .dialogsItems {
     padding: 10px;
 }
@@ -16,6 +15,90 @@
 .messages {
     padding: 10px;
     outline:3px yellow;
+    
 }
 
-.messages .message {}
+
+
+
+
+
+
+
+
+.message { 
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+
+    order: 3;
+    border-radius: 7px 7px 0px 7px;
+    background-color: rgba(15,110,130,0.4);
+    padding: 5px;
+
+    margin-bottom: 15px; 
+}
+
+.imageAndText {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.angl {
+    height: 14px;
+    width: 13px;
+    color:brown;
+    order: 5;
+    background: radial-gradient(circle at 100% 0%, rgba(0,0,0, 0) 13px, rgba(30,110,130,0.5) 0) ;
+
+}
+
+
+.imageAndText img {
+    order: 6;
+    width: 90px;
+    border-radius: 50px;
+    background-color: olivedrab;
+}
+
+
+.text {
+    order: 3;
+    border-radius: 7px 7px 0px 7px;
+    background-color: rgba(15,110,130,0.4);
+    padding: 5px;
+}
+
+.text:after {}
+
+.name {
+    font-weight: bold;
+
+}
+
+.messageText {
+    display:flex;
+    word-wrap: break-word;         /* All browsers since IE 5.5+ */
+    overflow-wrap: break-word; 
+    word-break: break-all;    /* Renamed property in CSS3 draft spec */
+    max-width: 500px;
+    white-space:break-spaces;
+
+}
+
+.break {
+    flex-basis: 100%;
+    width: 0px; 
+    height: 0px; 
+}
+
+.time {
+    padding-right: 25px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    
+   
+}
+

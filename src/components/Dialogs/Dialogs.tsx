@@ -4,7 +4,9 @@ import s from './Dialogs.module.css'
 import Message from './Message/Message';
 
 
-const Dialogs = (props: DialogsPropsType & MessagesPropsType) => {
+// const Dialogs = (props: DialogsPropsType & MessagesPropsType) => {
+
+const Dialogs = (props: any) => {
 
 // let dialogs = [
 //     { id: 1, name: 'Mitka' },
@@ -23,11 +25,11 @@ const Dialogs = (props: DialogsPropsType & MessagesPropsType) => {
 
 
 //lesson 25.map
-let dialogElements = props.dialogs
-    .map(dialog => <DialogItem name={dialog.name} id={dialog.id} />);
+let dialogElements = props.state.dialogs
+    .map((dialog: { name: any; id: any; }) => <DialogItem name={dialog.name} id={dialog.id} />);
 //lesson 25.map
-let messageElements = props.messages
-    .map(messageEl => <Message message={messageEl.message} />);
+let messageElements = props.state.messages
+    .map((messageEl: { message: any; }) => <Message classNmae="message" message={messageEl.message} />);
 
 
 

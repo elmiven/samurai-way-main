@@ -8,62 +8,79 @@ import Navbar from './components/Navbar/Navbar';
 import News from './components/News/News';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
+import Sidebar from './components/Sidebar/Sidebar';
 
 
 import Technologies from './Technologies';
 
-export
-type PostPropsType = {
-  posts: PostType[]
-}
-export
-type PostType = {
-  id: number, 
-  message: string, 
-  likescount: number 
-}
+type appStateType = {
+  appState: {
+    posts: PostType[];
+    dialogs: DialogsType[];
+    messages: MessagesType[];
+  };
+  }
 
-export
-type DialogsPropsType = {
-  dialogs:DialogsType[]
+// type appStateType = {
+//   posts: PostType[];
+//   dialogs: DialogsType[];
+//   messages: MessagesType[];
+//   }
 
-}
-export
-type DialogsType = {
-  id: number, 
-  name: string 
-}
 
 export
-type MessagesPropsType = {
- messages: MessagesType[]
-
-}
+  type PostPropsType = {
+    posts: PostType[]
+  }
 export
-type MessagesType = {
-  id: number
-  message: string
+  type PostType = {
+    id: number,
+    message: string,
+    likescount: number
+  }
 
-}
+export
+  type DialogsPropsType = {
+    dialogs: DialogsType[]
+
+  }
+export
+  type DialogsType = {
+    id: number,
+    name: string
+  }
+
+export
+  type MessagesPropsType = {
+    messages: MessagesType[]
+
+  }
+export
+  type MessagesType = {
+    id: number
+    message: string
+
+  }
 
 
 
-const App = (props: PostPropsType & DialogsPropsType & MessagesPropsType) => {
+const App = (props: any) => {
   return (
     <BrowserRouter>
-    <div className='app-wrapper'>
-      {/* Hello, samurai! Let's go! */}
-      <Header />
-      <Navbar />  
-      <div className='app-wrapper-content'>
-        <Route path='/profile' render={()=><Profile posts={props.posts} />} />
-        <Route path='/dialogs' render={()=><Dialogs dialogs={props.dialogs} messages={props.messages} />} />
-        <Route path='/music' component={Music} />
-        <Route path='/news' component={News} />
-        <Route path='/settings' component={Settings} />
+      <div className='app-wrapper'>
+        {/* Hello, samurai! Let's go! */}
+        <Header />
+        <Navbar state={props.appState.sidebar}/>
+        {console.log(props.appState.sidebar)}
+        <div className='app-wrapper-content'>
+          <Route path='/profile' render={() => <Profile state={props.appState.profilePage} />} />
+          <Route path='/dialogs' render={() => <Dialogs state={props.appState.dialogsPage} />} />
+          <Route path='/music' component={Music} />
+          <Route path='/news' component={News} />
+          <Route path='/settings' component={Settings} />
+        </div>
+        {/*<Technologies /> */}
       </div>
-      {/*<Technologies /> */}
-    </div>
     </BrowserRouter>
   );
 }
