@@ -55,6 +55,9 @@ let messageElements = props.state.messages
                 <MessageItem message={messages[1].message} />
                 <MessageItem message="Ho" />
                 <MessageItem message="Lets go!" /> */}
+
+<textarea> </textarea> <button>send</button>
+
             </div>
         </div>
 

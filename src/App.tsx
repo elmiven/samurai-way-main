@@ -31,6 +31,7 @@ type appStateType = {
 export
   type PostPropsType = {
     posts: PostType[]
+    addPost: (a: string) => void
   }
 export
   type PostType = {
@@ -72,9 +73,16 @@ const App = (props: any) => {
         <Header />
         <Navbar state={props.appState.sidebar}/>
         {console.log(props.appState.sidebar)}
+        
         <div className='app-wrapper-content'>
-          <Route path='/profile' render={() => <Profile state={props.appState.profilePage} />} />
-          <Route path='/dialogs' render={() => <Dialogs state={props.appState.dialogsPage} />} />
+          <Route path='/profile' render={() => 
+            <Profile 
+              state={props.appState.profilePage} 
+              addPost={props.addPost}/>} 
+            />
+          <Route path='/dialogs' render={() => 
+            <Dialogs state={props.appState.dialogsPage} />} 
+          />
           <Route path='/music' component={Music} />
           <Route path='/news' component={News} />
           <Route path='/settings' component={Settings} />

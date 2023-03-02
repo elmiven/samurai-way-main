@@ -1,6 +1,7 @@
 import Post from './Post/Post';
 import s from './MyPosts.module.css'
 import { PostPropsType } from '../../../App';
+import React, { DetailedHTMLProps, TextareaHTMLAttributes } from 'react';
 
 
 
@@ -17,15 +18,21 @@ const MyPosts = (props: PostPropsType) => {
 //lesson 25.map
 let postElements = props.posts.map( post => <Post message={post.message} likecount={post.likescount} />)
 
+const newPostElement = React.createRef<any>();
 
+const sendMessageHandler = ()=>{
+  let text = newPostElement.current.value; 
+  props.addPost(text);
+  newPostElement.current.value = '';
+} 
 
   return (
     <div className={s.postsBlock}>
-      <h3>My Posts </h3>
+      <h3>My Posts</h3>
       <div>
-        <textarea></textarea>
+        <textarea ref={newPostElement} onChange={ (e: React.ChangeEvent<HTMLTextAreaElement>) => { props.addPost(e.currentTarget.value)} } > </textarea>
         <div>
-          <button>send message</button>
+          <button onClick={ sendMessageHandler }>send message</button>
         </div>
       </div>
 
