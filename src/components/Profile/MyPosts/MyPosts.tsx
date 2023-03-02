@@ -21,16 +21,20 @@ let postElements = props.posts.map( post => <Post message={post.message} likecou
 const newPostElement = React.createRef<any>();
 
 const sendMessageHandler = ()=>{
-  let text = newPostElement.current.value; 
-  props.addPost(text);
-  newPostElement.current.value = '';
+  // let text = newPostElement.current.value; 
+  props.addPost();
+  // newPostElement.current.value = '';
+
 } 
+
+const textareaOnChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => 
+{ props.updateNewPostText(e.currentTarget.value) } 
 
   return (
     <div className={s.postsBlock}>
       <h3>My Posts</h3>
       <div>
-        <textarea ref={newPostElement} onChange={ (e: React.ChangeEvent<HTMLTextAreaElement>) => { props.addPost(e.currentTarget.value)} } > </textarea>
+        <textarea ref={newPostElement} value={props.newPostText} onChange={textareaOnChangeHandler} > </textarea>
         <div>
           <button onClick={ sendMessageHandler }>send message</button>
         </div>

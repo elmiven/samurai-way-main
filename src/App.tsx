@@ -30,9 +30,13 @@ type appStateType = {
 
 export
   type PostPropsType = {
+    
+    newPostText: string | number | readonly string[] | undefined;
     posts: PostType[]
-    addPost: (a: string) => void
+    addPost: () => void
+    updateNewPostText: (a: string) => void
   }
+
 export
   type PostType = {
     id: number,
@@ -78,7 +82,8 @@ const App = (props: any) => {
           <Route path='/profile' render={() => 
             <Profile 
               state={props.appState.profilePage} 
-              addPost={props.addPost}/>} 
+              addPost={props.addPost}
+              updateNewPostText={props.updateNewPostText}/>} 
             />
           <Route path='/dialogs' render={() => 
             <Dialogs state={props.appState.dialogsPage} />} 
