@@ -2,6 +2,7 @@ import Post from './Post/Post';
 import s from './MyPosts.module.css'
 import { PostPropsType } from '../../../App';
 import React, { DetailedHTMLProps, TextareaHTMLAttributes } from 'react';
+import { addPostActionCreator, updateNewPostActionCreator } from '../../../redux/Store';
 
 
 
@@ -23,8 +24,9 @@ const MyPosts = (props: PostPropsType) => {
   const sendMessageHandler = () => {
     // let text = newPostElement.current.value; 
     // props.addPost();
-    props.dispatch({ type: "ADD-POST" })
-    // newPostElement.current.value = '';
+    // newPostElement.current.value = ''; //clearing in state
+        // props.dispatch({ type: "ADD_POST" })
+    props.dispatch(addPostActionCreator())
   }
 
 
@@ -32,9 +34,9 @@ const MyPosts = (props: PostPropsType) => {
   const textareaOnChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     //  props.updateNewPostText(newPostElement.current.value) //with ref 
     //  props.updateNewPostText(e.currentTarget.value) 
-
-    let action = {type: "UPDATE-NEW-POST-TEXT", newText: e.currentTarget.value}
-
+    // let action = { type: "UPDATE-NEW-POST-TEXT", newText: e.currentTarget.value }
+    // props.dispatch(action)
+    let action = updateNewPostActionCreator(e.currentTarget.value);
     props.dispatch(action)
   }
 

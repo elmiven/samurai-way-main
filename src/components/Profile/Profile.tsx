@@ -12,8 +12,8 @@ const Profile = (props: any) => {
       <MyPosts 
         posts={props.state.posts} 
         newPostText={props.state.newPostText}
-        addPost={props.addPost}
-        updateNewPostText={props.updateNewPostText} 
+        dispatch={props.dispatch}
+        // updateNewPostText={props.updateNewPostText} 
       />
     </div>
   )

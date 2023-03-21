@@ -19,7 +19,7 @@ type appStateType = {
     dialogs: DialogsType[];
     messages: MessagesType[];
   };
-  }
+}
 
 // type appStateType = {
 //   posts: PostType[];
@@ -30,11 +30,12 @@ type appStateType = {
 
 export
   type PostPropsType = {
-    
+
     newPostText: string | number | readonly string[] | undefined;
     posts: PostType[]
-    addPost: () => void
-    updateNewPostText: (a: string) => void
+    addPost?: () => void
+    updateNewPostText?: (a: string) => void
+    dispatch: any
   }
 
 export
@@ -75,18 +76,19 @@ const App = (props: any) => {
       <div className='app-wrapper'>
         {/* Hello, samurai! Let's go! */}
         <Header />
-        <Navbar state={props.appState.sidebar}/>
+        <Navbar state={props.appState.sidebar} />
         {console.log(props.appState.sidebar)}
-        
+
         <div className='app-wrapper-content'>
-          <Route path='/profile' render={() => 
-            <Profile 
-              state={props.appState.profilePage} 
-              addPost={props.addPost}
-              updateNewPostText={props.updateNewPostText}/>} 
-            />
-          <Route path='/dialogs' render={() => 
-            <Dialogs state={props.appState.dialogsPage} />} 
+          <Route path='/profile' render={() =>
+            <Profile
+              state={props.appState.profilePage}
+              dispatch={props.dispatch}
+              // updateNewPostText={props.updateNewPostText}
+            />}
+          />
+          <Route path='/dialogs' render={() =>
+            <Dialogs state={props.appState.dialogsPage} />}
           />
           <Route path='/music' component={Music} />
           <Route path='/news' component={News} />
