@@ -1,4 +1,5 @@
 import { DialogsPropsType, DialogsType, MessagesPropsType } from '../../App';
+import { sendMessageCreator, updateNewMessageBodyCreator } from '../../redux/Store';
 import DialogItem from './DialogItem/DialogItem';
 import s from './Dialogs.module.css'
 import Message from './Message/Message';
@@ -8,30 +9,43 @@ import Message from './Message/Message';
 
 const Dialogs = (props: any) => {
 
-// let dialogs = [
-//     { id: 1, name: 'Mitka' },
-//     { id: 2, name: 'Mikha' },
-//     { id: 3, name: 'Petka' },
-//     { id: 4, name: 'Petka' },
-//     { id: 5, name: 'Lenka' },
-// ]
+    let state = props.store.getState().dialogsPage;
 
 
-// let messages = [
-//     { id: 1, message: 'Hey' },
-//     { id: 2, message: 'Ho' },
-//     { id: 3, message: 'Les Go!' },
-// ]
+    // let dialogs = [
+    //     { id: 1, name: 'Mitka' },
+    //     { id: 2, name: 'Mikha' },
+    //     { id: 3, name: 'Petka' },
+    //     { id: 4, name: 'Petka' },
+    //     { id: 5, name: 'Lenka' },
+    // ]
 
 
-//lesson 25.map
-let dialogElements = props.state.dialogs
-    .map((dialog: { name: any; id: any; }) => <DialogItem name={dialog.name} id={dialog.id} />);
-//lesson 25.map
-let messageElements = props.state.messages
-    .map((messageEl: { message: any; }) => <Message classNmae="message" message={messageEl.message} />);
+    // let messages = [
+    //     { id: 1, message: 'Hey' },
+    //     { id: 2, message: 'Ho' },
+    //     { id: 3, message: 'Les Go!' },
+    // ]
 
 
+    //lesson 25.map
+    let dialogElements = state.dialogs
+        .map((dialog: { name: any; id: any; }) => <DialogItem name={dialog.name} id={dialog.id} />);
+    //lesson 25.map
+    let messageElements = state.messages
+        .map((messageEl: { message: any; }) => <Message classNmae="message" message={messageEl.message} />);
+
+    let newMessageBody = state.newMessageBody;
+
+
+    
+    let onSendMessageClick = () => {
+        props.store.dispatch(sendMessageCreator())
+    }
+    let onNewMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        let body = e.target.value
+        props.store.dispatch(updateNewMessageBodyCreator(body))
+    }
 
     return (
         <div className={s.dialogs}>
@@ -56,7 +70,16 @@ let messageElements = props.state.messages
                 <MessageItem message="Ho" />
                 <MessageItem message="Lets go!" /> */}
 
-<textarea> </textarea> <button>send</button>
+                <textarea
+                    placeholder='enter your screwing message'
+                    value={newMessageBody}
+                    onChange={onNewMessageChange}
+
+                > </textarea> 
+                <button
+                onClick={onSendMessageClick}
+                
+                >send</button>
 
             </div>
         </div>

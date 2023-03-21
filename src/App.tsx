@@ -88,7 +88,10 @@ const App = (props: any) => {
             />}
           />
           <Route path='/dialogs' render={() =>
-            <Dialogs state={props.appState.dialogsPage} />}
+            // <Dialogs state={props.appState.dialogsPage} 
+            <Dialogs store={props.store} 
+            
+            />}
           />
           <Route path='/music' component={Music} />
           <Route path='/news' component={News} />
