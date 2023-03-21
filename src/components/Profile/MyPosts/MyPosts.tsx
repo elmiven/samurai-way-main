@@ -2,7 +2,8 @@ import Post from './Post/Post';
 import s from './MyPosts.module.css'
 import { PostPropsType } from '../../../App';
 import React, { DetailedHTMLProps, TextareaHTMLAttributes } from 'react';
-import { addPostActionCreator, updateNewPostActionCreator } from '../../../redux/Store';
+import { addPostActionCreator, updateNewPostActionCreator } from '../../../redux/profile-reducer';
+
 
 
 

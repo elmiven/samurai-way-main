@@ -1,5 +1,5 @@
 import { DialogsPropsType, DialogsType, MessagesPropsType } from '../../App';
-import { sendMessageCreator, updateNewMessageBodyCreator } from '../../redux/Store';
+import { sendMessageCreator, updateNewMessageBodyCreator } from '../../redux/dialogs-reducer';
 import DialogItem from './DialogItem/DialogItem';
 import s from './Dialogs.module.css'
 import Message from './Message/Message';

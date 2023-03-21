@@ -3,6 +3,10 @@
 //     post: Array<PostType>
 // }
 
+import dialogsReducer from "./dialogs-reducer"
+import profileReducer from "./profile-reducer"
+import sidebarReducer from "./sidebar-reducer"
+
 
 // export type RootStateType ={
 //     profilePage: ProfilePageType
@@ -40,6 +44,7 @@ let store = {
     _state: {
         profilePage: {
             posts: [
+
                 { id: 1, message: 'Hi! HRU?', likescount: 5 },
                 { id: 2, message: 'Hello I\'m fine!', likescount: 12 },
             ],
@@ -66,7 +71,7 @@ let store = {
                 { id: 2, name: "Hrendy Hren" },
                 { id: 3, name: "Andy Mand" },
                 ]
-            
+
         }
 
     },
@@ -76,7 +81,8 @@ let store = {
     _callSubscriber(a: any) {
         console.log("State changed!")
     },
-    // addPost() {
+    // V1. Before dispatch. Methods moved to dispatch. 
+    // addPost() { 
     //     let newPost = {
     //         id: 5,
     //         message: this._state.profilePage.newPostText,
@@ -93,44 +99,44 @@ let store = {
     subscribe(observer: any) {
         this._callSubscriber = observer
     }, dispatch(action: any) {
-        if (action.type === ADD_POST) {
-            let newPost = {
-                id: 5,
-                message: this._state.profilePage.newPostText,
-                likescount: 0
-            };
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._callSubscriber(this._state);
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.newText;
-            this._callSubscriber(this._state);
-        } else if (action.type === SEND_MESSAGE) {
-            let newPost = {
-                id: 6,
-                message: this._state.dialogsPage.newMessageBody,
-                likescount: 0
-            }; if (this._state.dialogsPage.newMessageBody.trim()) {
-            this._state.dialogsPage.messages.push(newPost);}
-            this._state.dialogsPage.newMessageBody = '';
-            this._callSubscriber(this._state);
-        } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-            this._state.dialogsPage.newMessageBody = action.body;
-            this._callSubscriber(this._state);
-        }
+
+        //v2. Dispatch before reducer | moved this dispatch methods to reducers
+        // if (action.type === ADD_POST) {
+        //     let newPost = {
+        //         id: 5,
+        //         message: this._state.profilePage.newPostText,
+        //         likescount: 0
+        //     };
+        //     this._state.profilePage.posts.push(newPost);
+        //     this._state.profilePage.newPostText = '';
+        //     this._callSubscriber(this._state);
+        // } else if (action.type === UPDATE_NEW_POST_TEXT) {
+        //     this._state.profilePage.newPostText = action.newText;
+        //     this._callSubscriber(this._state);
+        // } else if (action.type === SEND_MESSAGE) {
+        //     let newPost = {
+        //         id: 6,
+        //         message: this._state.dialogsPage.newMessageBody,
+        //     }; if (this._state.dialogsPage.newMessageBody.trim()) {
+        //         this._state.dialogsPage.messages.push(newPost);
+        //     }
+        //     this._state.dialogsPage.newMessageBody = '';
+        //     this._callSubscriber(this._state);
+        // } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+        //     this._state.dialogsPage.newMessageBody = action.body;
+        //     this._callSubscriber(this._state);
+        // }
+
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+        // this._state.sidebar = sidebarReducer(this._state.sidebar, action)
+
+        this._callSubscriber(this._state);
     }
 }
 
 
 
-
-export const addPostActionCreator = () => ({ type: ADD_POST })
-
-export const updateNewPostActionCreator = (text: any) => ({ type: UPDATE_NEW_POST_TEXT, newText: text })
-
-export const sendMessageCreator = () => ({ type: SEND_MESSAGE })
-
-export const updateNewMessageBodyCreator = (body: any) => ({ type: UPDATE_NEW_MESSAGE_BODY, body: body })
 
 
 
