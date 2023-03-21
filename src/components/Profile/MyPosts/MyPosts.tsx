@@ -14,21 +14,29 @@ import React, { DetailedHTMLProps, TextareaHTMLAttributes } from 'react';
 
 
 const MyPosts = (props: PostPropsType) => {
+  //lesson 25.map
+  let postElements = props.posts.map(post => <Post message={post.message} likecount={post.likescount} />)
 
-//lesson 25.map
-let postElements = props.posts.map( post => <Post message={post.message} likecount={post.likescount} />)
 
-const newPostElement = React.createRef<any>();
 
-const sendMessageHandler = ()=>{
-  // let text = newPostElement.current.value; 
-  props.addPost();
-  // newPostElement.current.value = '';
 
-} 
+  const sendMessageHandler = () => {
+    // let text = newPostElement.current.value; 
+    // props.addPost();
+    props.dispatch({ type: "ADD-POST" })
+    // newPostElement.current.value = '';
+  }
 
-const textareaOnChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => 
-{ props.updateNewPostText(e.currentTarget.value) } 
+
+  const newPostElement = React.createRef<any>();
+  const textareaOnChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    //  props.updateNewPostText(newPostElement.current.value) //with ref 
+    //  props.updateNewPostText(e.currentTarget.value) 
+
+    let action = {type: "UPDATE-NEW-POST-TEXT", newText: e.currentTarget.value}
+
+    props.dispatch(action)
+  }
 
   return (
     <div className={s.postsBlock}>
@@ -36,7 +44,7 @@ const textareaOnChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) =>
       <div>
         <textarea ref={newPostElement} value={props.newPostText} onChange={textareaOnChangeHandler} > </textarea>
         <div>
-          <button onClick={ sendMessageHandler }>send message</button>
+          <button onClick={sendMessageHandler}>send message</button>
         </div>
       </div>
 
