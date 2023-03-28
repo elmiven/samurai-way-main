@@ -1,5 +1,5 @@
 import { DialogsPropsType, DialogsType, MessagesPropsType } from '../../App';
-import { sendMessageCreator, updateNewMessageBodyCreator } from '../../redux/dialogs-reducer';
+import { sendMessageCreator, updateNewMessageBodyCreator } from '../../redux/dialogsReducer';
 import DialogItem from './DialogItem/DialogItem';
 import s from './Dialogs.module.css'
 import Message from './Message/Message';
@@ -8,9 +8,9 @@ import Message from './Message/Message';
 // const Dialogs = (props: DialogsPropsType & MessagesPropsType) => {
 
 const Dialogs = (props: any) => {
-
-    let state = props.store.getState().dialogsPage;
-
+    //pass the whole store! and then extract needed data(Bad practice!!!) 
+    // let state = props.store.getState().dialogsPage;
+    let state = props.dialogsPage
 
     // let dialogs = [
     //     { id: 1, name: 'Mitka' },
@@ -40,11 +40,13 @@ const Dialogs = (props: any) => {
 
     
     let onSendMessageClick = () => {
-        props.store.dispatch(sendMessageCreator())
+        props.sendMessage();
+        // props.store.dispatch(sendMessageCreator())
     }
     let onNewMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         let body = e.target.value
-        props.store.dispatch(updateNewMessageBodyCreator(body))
+        props.updateNewMessageBody(body)
+        // props.store.dispatch(updateNewMessageBodyCreator(body))
     }
 
     return (

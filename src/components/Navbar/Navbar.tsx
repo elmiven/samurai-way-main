@@ -24,8 +24,7 @@ const Navbar = (props: any) => {
         </div>
 
       </nav>
-      <Sidebar state={props.state}/>
-      {console.log(props.state)}
+      {/* <Sidebar state={props.state}/> */}
       
     </div>
   )

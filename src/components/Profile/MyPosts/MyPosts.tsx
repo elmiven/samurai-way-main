@@ -2,7 +2,7 @@ import Post from './Post/Post';
 import s from './MyPosts.module.css'
 import { PostPropsType } from '../../../App';
 import React, { DetailedHTMLProps, TextareaHTMLAttributes } from 'react';
-import { addPostActionCreator, updateNewPostActionCreator } from '../../../redux/profile-reducer';
+import { addPostActionCreator, updateNewPostActionCreator } from '../../../redux/profileReducer';
 
 
 
@@ -15,30 +15,31 @@ import { addPostActionCreator, updateNewPostActionCreator } from '../../../redux
 
 
 
-const MyPosts = (props: PostPropsType) => {
+const MyPosts = (props: any) => {
   //lesson 25.map
-  let postElements = props.posts.map(post => <Post message={post.message} likecount={post.likescount} />)
+  let postElements = props.posts.map((p: any) => <Post message={p.message} likecount={p.likescount} />)
 
-
-
-
-  const sendMessageHandler = () => {
-    // let text = newPostElement.current.value; 
-    // props.addPost();
-    // newPostElement.current.value = ''; //clearing in state
-        // props.dispatch({ type: "ADD_POST" })
-    props.dispatch(addPostActionCreator())
-  }
 
 
   const newPostElement = React.createRef<any>();
+
+  const sendMessageHandler = () => {
+    // let text = newPostElement.current.value; 
+    props.addPost();
+    // newPostElement.current.value = ''; //clearing in state
+    // props.dispatch({ type: "ADD_POST" })
+    // props.dispatch(addPostActionCreator())
+  }
+
+
+
   const textareaOnChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     //  props.updateNewPostText(newPostElement.current.value) //with ref 
-    //  props.updateNewPostText(e.currentTarget.value) 
+    props.updateNewPostText(e.currentTarget.value)
     // let action = { type: "UPDATE-NEW-POST-TEXT", newText: e.currentTarget.value }
     // props.dispatch(action)
-    let action = updateNewPostActionCreator(e.currentTarget.value);
-    props.dispatch(action)
+    // let action = updateNewPostActionCreator(e.currentTarget.value);
+    // props.dispatch(action)
   }
 
   return (
