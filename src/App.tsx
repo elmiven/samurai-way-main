@@ -77,13 +77,14 @@ const App = (props: any) => {
       <div className='app-wrapper'>
         {/* Hello, samurai! Let's go! */}
         <Header />
-        <Navbar state={props.appState.sidebar} />
-        {console.log(props.appState.sidebar)}
+        <Navbar 
+        // state={props.appState.sidebar} />
+        />
 
         <div className='app-wrapper-content'>
           <Route path='/profile' render={() =>
             <Profile
-              store={props.store}
+              // store={props.store}
 
             // state={props.appState.profilePage}
 
@@ -93,7 +94,8 @@ const App = (props: any) => {
           />
           <Route path='/dialogs' render={() =>
             // <Dialogs state={props.appState.dialogsPage} 
-            <DialogsContainer store={props.store}
+            <DialogsContainer 
+            // store={props.store}
 
             />}
           />
