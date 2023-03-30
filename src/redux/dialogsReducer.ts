@@ -31,12 +31,17 @@ const dialogsReducer = (state: any = initialState, action: any) => {
             state.messages.push(newPost);
         }
         state.newMessageBody = '';
-        return state;
+        return {...state, 
+            newMessageBody: '',
+        newPost} 
+        
+        
         // this._callSubscriber(this._state);
     // } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
         case UPDATE_NEW_MESSAGE_BODY:
-        state.newMessageBody = action.body;
-        return state;
+            
+        // state.newMessageBody = action.body;
+        return {...state, newMessageBody: action.body};
         // this._callSubscriber(this._state);
     }
 

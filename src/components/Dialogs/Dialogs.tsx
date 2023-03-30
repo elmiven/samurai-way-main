@@ -30,13 +30,12 @@ const Dialogs = (props: any) => {
 
     //lesson 25.map
     let dialogElements = state.dialogs
-        .map((dialog: { name: any; id: any; }) => <DialogItem name={dialog.name} id={dialog.id} />);
+        .map((dialog: { name: any; id: any; }) => <DialogItem key={dialog.id} name={dialog.name} id={dialog.id} />);
     //lesson 25.map
     let messageElements = state.messages
-        .map((messageEl: { message: any; }) => <Message classNmae="message" message={messageEl.message} />);
+        .map((messageEl: {id: any; message: any; }) => <Message key={messageEl.id} classNmae="message" message={messageEl.message} />);
 
     let newMessageBody = state.newMessageBody;
-
 
     
     let onSendMessageClick = () => {
@@ -46,6 +45,7 @@ const Dialogs = (props: any) => {
     let onNewMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         let body = e.target.value
         props.updateNewMessageBody(body)
+        
         // props.store.dispatch(updateNewMessageBodyCreator(body))
     }
 

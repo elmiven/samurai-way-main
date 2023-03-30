@@ -4,16 +4,16 @@ import StoreContext from "../../StoreContext"
 import Dialogs from "./Dialogs"
 
 // const DialogsContainer = () => {
-    //Code before Context
-    // let state = props.store.getState().dialogsPage
+//Code before Context
+// let state = props.store.getState().dialogsPage
 
 
-    // let onSendMessageClick = () => {
-    //     props.store.dispatch(sendMessageCreator())
-    // }
-    // let onNewMessageChange = (body: any) => {
-    //     props.store.dispatch(updateNewMessageBodyCreator(body))
-    // }
+// let onSendMessageClick = () => {
+//     props.store.dispatch(sendMessageCreator())
+// }
+// let onNewMessageChange = (body: any) => {
+//     props.store.dispatch(updateNewMessageBodyCreator(body))
+// }
 
 
 //Code w HandMadeContet createContext
@@ -49,11 +49,12 @@ let mapStateToPros = (state: any) => {
 }
 let mapDispatchToProps = (dispatch: any) => {
     return {
-        updateNewMessageBody: () => {
+        sendMessage: () => {
             dispatch(sendMessageCreator());
         },
-        sendMessage: (body: any) => {
+        updateNewMessageBody: (body: any) => {
             dispatch(updateNewMessageBodyCreator(body));
+            
         }
     }
 }

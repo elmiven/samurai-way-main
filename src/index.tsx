@@ -29,7 +29,8 @@ rerenderEntireTree(store.getState())
 //  store.subscribe(()=>{rerenderEntireTree(store.getState())});
 
 
-store.subscribe(() => {
-  let state = store.getState();
-  rerenderEntireTree(state)
-})
+//used for hand made context and before it 
+// store.subscribe(() => {
+//   let state = store.getState();
+//   rerenderEntireTree(state)
+// })

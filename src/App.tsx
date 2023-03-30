@@ -99,6 +99,10 @@ const App = (props: any) => {
 
             />}
           />
+
+          <Route path='/users' render={() => <div>users</div>}/>
+          
+
           <Route path='/music' component={Music} />
           <Route path='/news' component={News} />
           <Route path='/settings' component={Settings} />
