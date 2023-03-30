@@ -11,9 +11,9 @@ import store from "./redux/reduxStore"
 const StoreContext = React.createContext(store);
 
 export const Provider = (props: any) => {
-    return <StoreContext.Provider value={props.store}>
-        {props.children}
-    </StoreContext.Provider>
+    // return <StoreContext.Provider value={props.store}>
+    //     {props.children}
+    // </StoreContext.Provider>
 }
 
 
