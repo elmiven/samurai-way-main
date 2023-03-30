@@ -10,6 +10,8 @@ import News from './components/News/News';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 import Sidebar from './components/Sidebar/Sidebar';
+import Users from './components/Users/Users';
+import UsersContainer from './components/Users/UsersContainer';
 
 
 import Technologies from './Technologies';
@@ -100,8 +102,8 @@ const App = (props: any) => {
             />}
           />
 
-          <Route path='/users' render={() => <div>users</div>}/>
-          
+          <Route path='/users' render={() => <UsersContainer />} />
+
 
           <Route path='/music' component={Music} />
           <Route path='/news' component={News} />

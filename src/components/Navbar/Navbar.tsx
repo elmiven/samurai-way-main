@@ -22,10 +22,13 @@ const Navbar = (props: any) => {
         <div className={s.item}>
           <a href='/settings'>Settings</a>
         </div>
+        <div className={s.item}>
+          <a href='/users'>Users</a>
+        </div>
 
       </nav>
       {/* <Sidebar state={props.state}/> */}
-      
+
     </div>
   )
 }
