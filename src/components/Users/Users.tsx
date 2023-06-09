@@ -1,6 +1,27 @@
 import StyleSheet from './users.module.css';
 
 let Users = (props: any) => {
+
+    if (props.users.length === 0)
+        props.setUsers(
+            [
+                {
+                    id: 1, photoUrl: 'https://thumbs.dreamstime.com/b/businessman-programmer-avatar-profile-userpic-white-background-vector-illustration-66140549.jpg',
+                    followed: false, fullName: 'Mitka', status: "I'm a bozzz", location: { city: 'Minsk', country: 'Belarus' }
+                },
+                {
+                    id: 2, photoUrl: 'https://thumbs.dreamstime.com/b/businessman-programmer-avatar-profile-userpic-white-background-vector-illustration-66140549.jpg',
+                    followed: true, fullName: 'Vitka', status: "I'm a boszsz", location: { city: 'Kiev', country: 'Ukraine' }
+                },
+                {
+                    id: 3, photoUrl: 'https://thumbs.dreamstime.com/b/businessman-programmer-avatar-profile-userpic-white-background-vector-illustration-66140549.jpg',
+                    followed: true, fullName: 'Andrew', status: "I'm a boooo", location: { city: 'Lviv', country: 'Ukraine' }
+                },
+            ]
+        )
+
+
+
     return <div>
         {
             props.users.map((u: any) => <div key={u.id}>
